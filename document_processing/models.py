@@ -2,6 +2,7 @@
 from enum import Enum
 from django.db import models
 from .validators.file_validator import validate_file_extension, validate_file_size
+from .validators.email_validator import validate_email_address
 
 
 class DocumentStatus(Enum):
@@ -21,7 +22,7 @@ class Document(models.Model):
     # document file
     file = models.FileField(upload_to='documents/', validators=[validate_file_extension, validate_file_size])
     # email of the applicant
-    email = models.EmailField(blank=False)
+    email = models.EmailField(blank=False, validators=[validate_email_address])
     # status of the document
     status = models.CharField(max_length=255, default=DocumentStatus.PENDING.value)
     # date of submission
