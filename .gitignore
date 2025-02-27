@@ -22,4 +22,4 @@ build/
 *.out
 *.pid
 *.pid.lock
-
+temp.*
