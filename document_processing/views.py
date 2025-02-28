@@ -40,7 +40,6 @@ class DocumentView(APIView):
     """
     def put(self, request, pk):
         """PUT METHOD for update the status of the document."""
-        breakpoint()
         document = Document.objects.get(pk=pk)
         serializer = DocumentSerializer(document, data=request.data, partial=True)
         if serializer.is_valid():

@@ -9,7 +9,7 @@ def process_added_data_for_embedding():
     """
     Task to process the added data for embedding.
     """
-    for document in Document.objects.filter(extracted_text__isnull=False):
+    for document in Document.objects.filter(extracted_text__isnull=False, rag_status="pending"):
         id_to_str = str(document.id)
         try:
             add_document(id_to_str, document.extracted_text, {"title": document.title})
