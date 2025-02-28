@@ -15,6 +15,7 @@ class DocumentRagStatus(Enum):
     """Enums for the status of the document."""
     PENDING = 'pending'
     COMPLETED = 'completed'
+    FAILED = 'failed'
 
 # model for the document submitted by applicant
 class Document(models.Model):

@@ -10,4 +10,4 @@ class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         """Meta class for the DocumentSerializer."""
         model = Document
-        fields = ["id", "file", "created_at", "email", "status", "extracted_text"]
+        fields = ["id", "file", "created_at", "email", "status", "extracted_text", "rag_status"]

@@ -3,6 +3,7 @@ import os
 from celery import shared_task
 from document_processing.models import Document
 from rag.utils import collection
+from document_processing.models import DocumentRagStatus
 
 @shared_task
 def process_added_data_for_embedding():
@@ -14,13 +15,13 @@ def process_added_data_for_embedding():
         try:
             add_document(id_to_str, document.extracted_text, {"title": document.title})
             # update the document with the rag status
-            document.rag_status = "completed"
+            document.rag_status = DocumentRagStatus.COMPLETED.value
+            document.save(update_fields=['rag_status'])
         except (openai.error.OpenAIError, ValueError, TypeError) as e:
             # update the document with the rag status as failed
-            document.rag_status = "failed"
+            document.rag_status = DocumentRagStatus.FAILED.value
             document.error_message = str(e)
-        finally:
-            document.save()
+            document.save(update_fields=['rag_status'])
 
 def get_embedding(text):
     """Get the embedding for the given text."""

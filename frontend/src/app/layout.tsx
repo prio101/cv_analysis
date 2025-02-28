@@ -30,6 +30,13 @@ export default function RootLayout({
       >
         <div className="inline-flex h-full w-full items-center justify-center">
           <Link
+              href={`/`}
+              className="inline-block
+                        rounded-md px-4 py-2 bg-white hover:bg-indigo-400 text-sm text-indigo-500 hover:text-white focus:relative"
+            >
+              Home
+            </Link>
+          <Link
             href={`/upload`}
             className="inline-block
                       rounded-md px-4 py-2 bg-white hover:bg-indigo-400 text-sm text-indigo-500 hover:text-white focus:relative"
