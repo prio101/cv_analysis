@@ -71,9 +71,8 @@ Also this will enable the User to interact to the extracted information via a ch
 
 1. User can upload the CV in the frontend
 2. The CV will be sent to the backend and the OCR will extract the text from the CV
-3. If the CV is not uploaded, the app will always process the sample CVs available in the local storage: `sample_cvs/`
-4. The extracted text will be sent to the NLP model to extract the information
-5. The extracted information will be stored in the database
+3. The extracted text will be sent to the NLP model to vector database to save embeddings
+4. User can later interact with the extracted information via the chat interface
 
 
 ## Hints for error on system:
