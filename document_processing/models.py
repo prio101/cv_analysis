@@ -11,6 +11,11 @@ class DocumentStatus(Enum):
     APPROVED = 'approved'
     REJECTED = 'rejected'
 
+class DocumentRagStatus(Enum):
+    """Enums for the status of the document."""
+    PENDING = 'pending'
+    COMPLETED = 'completed'
+
 # model for the document submitted by applicant
 class Document(models.Model):
     """
@@ -22,9 +27,13 @@ class Document(models.Model):
     # document file
     file = models.FileField(upload_to='documents/', validators=[validate_file_extension, validate_file_size])
     # email of the applicant
-    email = models.EmailField(blank=False, validators=[validate_email_address])
+    email = models.EmailField(blank=True, validators=[validate_email_address])
     # status of the document
     status = models.CharField(max_length=255, default=DocumentStatus.PENDING.value)
+
+    # status of the document in RAG
+    rag_status = models.CharField(max_length=255, default=DocumentRagStatus.PENDING.value)
+
     # date of submission
     created_at = models.DateTimeField(auto_now_add=True)
 

@@ -15,7 +15,7 @@ After extracting the information, the application will store and display the inf
 Also this will enable the User to interact to the extracted information via a chat interface.
 
 ## Technologies Used:
-- Python
+- Python [Version: 3.10.x]
 - Django
 - S3 Storage (AWS/Minio/Digital Ocean)
 - Django Rest Framework
@@ -27,16 +27,16 @@ Also this will enable the User to interact to the extracted information via a ch
 - Redis
 - OCR (Tesseract)
 - LLM API (Language Model API for NLP)
-  - OpenAI GPT-3
-  - Ollama API ( Locally installed LLM )
+  - OpenAI GPT
 - Pytest
-- Docker (Optional)
 
 ### Key Technologies:
   - REST API
   - OCR
   - NLP
   - Microservices
+  - RAG
+  - Chroma DB
 
 
 
@@ -72,3 +72,13 @@ Also this will enable the User to interact to the extracted information via a ch
 3. If the CV is not uploaded, the app will always process the sample CVs available in the local storage: `sample_cvs/`
 4. The extracted text will be sent to the NLP model to extract the information
 5. The extracted information will be stored in the database
+
+
+## Hints:
+1. Needs SQLite Version 3.35.0 or higher for chroma db to work
+2. Needs to install poppler-utils for pdf2image to work
+
+
+
+### OpenAI API KEY:
+
