@@ -3,7 +3,7 @@
 This is a task given by ASTUDIO.
 
 ## Summary of the Application:
-This application will enable you to upload a CV and it will extract the following information:
+This application will enable you to upload a CV and APP will extract the following information:
 - Personal Information
 - Education History
 - Work Experience
@@ -11,18 +11,17 @@ This application will enable you to upload a CV and it will extract the followin
 - Projects
 - Certifications
 
-After extracting the information, the application will store and display the information in a structured format.
+After extracting the information, the application will store retrieve clips of the dataset and will save in Vector database.
 Also this will enable the User to interact to the extracted information via a chat interface.
 
 ## Technologies Used:
 - Python [Version: 3.10.x]
-- Django
+- Django [Version: 4.x.x]
 - S3 Storage (AWS/Minio/Digital Ocean)
 - Django Rest Framework
-- NEXT.js
-- React.js
-- Tailwind CSS
-- POSTGRESQL
+- NEXT.js ( Chat UI ) Based on the SSR (Server Side Rendering) with React
+- Tailwind CSS (For Styling)
+- POSTGRESQL (Database)
 - Celery
 - Redis
 - OCR (Tesseract)
@@ -31,12 +30,13 @@ Also this will enable the User to interact to the extracted information via a ch
 - Pytest
 
 ### Key Technologies:
-  - REST API
-  - OCR
-  - NLP
-  - Microservices
-  - RAG
-  - Chroma DB
+  - REST API (Django Rest Framework)
+  - OCR (Tesseract)
+  - NLP (OpenAI GPT for embeddings)
+  - Microservices ( Django[Umbrella/Hexagonal Project] + Frontend)
+  - RAG (Retrieval Augmented Generation)
+  - Chroma DB (SQLite) as a Vector Database Referece: https://www.trychroma.com/
+  - Token Based RATE LIMITING for the Chat API WIKI: https://en.wikipedia.org/wiki/Token_bucket
 
 
 
@@ -63,6 +63,8 @@ Also this will enable the User to interact to the extracted information via a ch
   # Linux: sudo apt-get install poppler-utils
   # Mac: brew install poppler
 
+  # to run the frontend server for chat window
+  cd frontend && npm install && npm run dev
 ```
 
 ### More:
@@ -74,11 +76,12 @@ Also this will enable the User to interact to the extracted information via a ch
 5. The extracted information will be stored in the database
 
 
-## Hints:
+## Hints for error on system:
 1. Needs SQLite Version 3.35.0 or higher for chroma db to work
 2. Needs to install poppler-utils for pdf2image to work
 
 
-
 ### OpenAI API KEY:
+- Added the testable OpenAi API Key in the `.env.example` file
+
 

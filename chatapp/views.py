@@ -19,7 +19,7 @@ def start_chat_session(request):
 def chat_completion(request):
     """Handle chat messages with rate limiting."""
     chat_session_id = request.data.get("chat_session_id")
-    user_message = request.data.get("message")
+    user_message = request.data.get("query")
 
     if not chat_session_id or not user_message:
         return Response({"error": "chat_session_id and message are required."}, status=status.HTTP_400_BAD_REQUEST)
@@ -38,7 +38,7 @@ def chat_completion(request):
         chat_session = ChatSession.objects.get(id=chat_session_id)
         try:
             ChatMessage.objects.create(
-                chat_session=chat_session,
+                session_id=chat_session.id,
                 content=response
             )
         except (ChatMessage.DoesNotExist, ChatSession.DoesNotExist) as e:
