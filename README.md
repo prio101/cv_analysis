@@ -1,6 +1,6 @@
 # CV Analyzer Application
 
-This is a task given by ASTUDIO.
+This is an app to analyze cv with rag.
 
 ## Summary of the Application:
 This application will enable you to upload a CV and APP will extract the following information:
